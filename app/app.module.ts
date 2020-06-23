@@ -1,12 +1,18 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+
+import { FirestoreService } from './firestore.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +24,10 @@ import { TabsPage } from '../pages/tabs/tabs';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule,
+    AngularFirestoreModule,
+    FirestoreService
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -28,7 +37,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     HomePage,
     TabsPage
   ],
-  providers: [
+  providers: [FirestoreService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
