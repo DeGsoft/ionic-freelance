@@ -2,8 +2,11 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+//import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule } from 'angularfire2';
+//import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { environment } from '../environments/environment';
 
 import { MyApp } from './app.component';
 
@@ -25,9 +28,8 @@ import { FirestoreService } from './firestore.service';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule,
-    AngularFirestoreModule,
-    FirestoreService
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
